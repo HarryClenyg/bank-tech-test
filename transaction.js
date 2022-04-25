@@ -7,6 +7,9 @@ class Transaction {
     this.balance += amount;
   }
 
+  withdraw(amount) {
+    this.balance -= amount;
+  }
 }
 
 module.exports = Transaction;
