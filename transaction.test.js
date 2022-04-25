@@ -2,15 +2,17 @@ const Transaction = require("./transaction");
 
 describe("Transaction", () => {
   it("can accept a deposit", () => {
-    const account = new Transaction;
-    account.deposit(1000);
-    expect(account.balance).toEqual(1000);
+    const transaction = new Transaction('deposit', 1000);
+    expect(transaction.difference).toEqual(1000);
   });
 
   it("can accept a withdrawal", () => {
-    const account = new Transaction;
-    account.deposit(1000);
-    account.withdraw(250);
-    expect(account.balance).toEqual(750)
+    const transaction = new Transaction('withdrawal', 750);
+    expect(transaction.difference).toEqual(-750);
+  });
+
+  it("includes date of transation", () => {
+    const transaction = new Transaction('deposit', 500);
+    expect(transaction.date).toBeDefined;
   });
 });
