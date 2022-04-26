@@ -21,7 +21,7 @@ describe("TransactionHistory", () => {
 
   it("can add multiple transactions", () => {
     const transaction2 = {
-      type: 'withdrawal',
+      type: 'withdraw',
       difference: -750,
       date: 'later today'
     }
@@ -31,7 +31,7 @@ describe("TransactionHistory", () => {
     expect(transactionHistory.transactions).toBeArray;
     expect(transactionHistory.transactions[1]).toEqual(
       expect.objectContaining({
-        type: 'withdrawal',
+        type: 'withdraw',
         difference: -750
       })
     );

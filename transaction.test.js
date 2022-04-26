@@ -7,7 +7,7 @@ describe("Transaction", () => {
   });
 
   it("can accept a withdrawal", () => {
-    const transaction = new Transaction('withdrawal', 750);
+    const transaction = new Transaction('withdraw', 750);
     expect(transaction.difference).toEqual(-750);
   });
 
