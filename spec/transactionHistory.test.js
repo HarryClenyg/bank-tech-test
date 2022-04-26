@@ -3,13 +3,18 @@ const History = require("../lib/transactionHistory");
 const transaction = {
   type: 'deposit',
   amount: 1000,
-  date: 'today'
 }
+
+const transaction2 = {
+  type: 'withdraw',
+  amount: 750,
+}
+
+const transactionHistory = new History()
+transactionHistory.addTransaction(transaction)
 
 describe("TransactionHistory", () => {
   it("can add a transaction", () => {
-    const transactionHistory = new History()
-    transactionHistory.addTransaction(transaction)
     expect(transactionHistory.transactions).toBeArray;
     expect(transactionHistory.transactions[0]).toEqual(
       expect.objectContaining({
@@ -20,13 +25,6 @@ describe("TransactionHistory", () => {
   })
 
   it("can add multiple transactions", () => {
-    const transaction2 = {
-      type: 'withdraw',
-      amount: 750,
-      date: 'later today'
-    }
-    const transactionHistory = new History()
-    transactionHistory.addTransaction(transaction)
     transactionHistory.addTransaction(transaction2)
     expect(transactionHistory.transactions).toBeArray;
     expect(transactionHistory.transactions[1]).toEqual(
