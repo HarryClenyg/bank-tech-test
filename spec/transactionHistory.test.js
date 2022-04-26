@@ -1,4 +1,4 @@
-const History = require("./transactionHistory");
+const History = require("../lib/transactionHistory");
 
 const transaction = {
   type: 'deposit',
