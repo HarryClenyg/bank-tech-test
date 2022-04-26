@@ -1,9 +1,19 @@
 const BankAccount = require("../lib/bankAccount");
-const Transaction = require("../lib/transaction");
 
 const bankAccount = new BankAccount(7000.00);
-bankAccount.history.addTransaction(new Transaction('deposit', 1000.00, '25/04/2022'));
-bankAccount.history.addTransaction(new Transaction('withdraw', 750.00, '26/04/2022'));
+const transactionMock = {
+  type: 'deposit',
+  amount: 1000,
+  date: '25/04/2022'
+}
+const transactionMock2 = {
+  type: 'withdraw',
+  amount: 750,
+  date: '26/04/2022'
+}
+
+bankAccount.history.addTransaction(transactionMock);
+bankAccount.history.addTransaction(transactionMock2);
 
 describe("Bank Account", () => {
 
