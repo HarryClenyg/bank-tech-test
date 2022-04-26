@@ -1,13 +1,8 @@
 class Transaction {
   constructor(type, amount, date = new Date().toLocaleDateString('en-GB')) {
-    this.difference = 0;
+    this.amount = amount;
     this.type = type;
     this.date = date;
-    if(this.type === "deposit"){
-      this.difference += amount;
-    } else if(this.type === "withdraw"){
-      this.difference -= amount;
-    }
   }
 }
 

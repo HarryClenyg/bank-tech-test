@@ -2,7 +2,7 @@ const History = require("./transactionHistory");
 
 const transaction = {
   type: 'deposit',
-  difference: 1000,
+  amount: 1000,
   date: 'today'
 }
 
@@ -14,7 +14,7 @@ describe("TransactionHistory", () => {
     expect(transactionHistory.transactions[0]).toEqual(
       expect.objectContaining({
         type: 'deposit',
-        difference: 1000
+        amount: 1000
       })
     );
   })
@@ -22,7 +22,7 @@ describe("TransactionHistory", () => {
   it("can add multiple transactions", () => {
     const transaction2 = {
       type: 'withdraw',
-      difference: -750,
+      amount: 750,
       date: 'later today'
     }
     const transactionHistory = new History()
@@ -32,7 +32,7 @@ describe("TransactionHistory", () => {
     expect(transactionHistory.transactions[1]).toEqual(
       expect.objectContaining({
         type: 'withdraw',
-        difference: -750
+        amount: 750
       })
     );
   })
