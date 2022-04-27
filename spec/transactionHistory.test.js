@@ -24,7 +24,7 @@ describe("TransactionHistory", () => {
     );
   })
 
-  it("can add multiple transactions", () => {
+  it("can store transactions", () => {
     transactionHistory.addTransaction(transactionMock2)
     expect(transactionHistory.transactions).toBeArray;
     expect(transactionHistory.transactions[1]).toEqual(

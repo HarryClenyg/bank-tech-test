@@ -1,18 +1,16 @@
 const Transaction = require("../lib/transaction");
 
+jest
+      .useFakeTimers()
+      .setSystemTime(new Date('2020-01-01'));
+      
 describe("Transaction", () => {
-  it("can accept a deposit", () => {
+  it("can return an object including all the transaction properties", () => {
     const transaction = new Transaction('deposit', 1000);
-    expect(transaction.amount).toEqual(1000);
-  });
-
-  it("can accept a withdrawal", () => {
-    const transaction = new Transaction('withdraw', 750);
-    expect(transaction.amount).toEqual(750);
-  });
-
-  it("includes date of transation", () => {
-    const transaction = new Transaction('deposit', 500);
-    expect(transaction.date).toBeDefined;
+    expect(transaction).toEqual(expect.objectContaining({
+      type: 'deposit',
+      amount: 1000,
+      date: '01/01/2020'
+    }));
   });
 });
