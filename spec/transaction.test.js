@@ -10,7 +10,7 @@ describe("Transaction", () => {
     expect(transaction).toEqual(expect.objectContaining({
       type: 'deposit',
       amount: 1000,
-      date: '01/01/2020'
+      date: new Date('2020-01-01')
     }));
   });
 });
