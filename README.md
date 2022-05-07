@@ -1,4 +1,4 @@
-# bank-tech-test
+# Bank Node app
 
 ### Requirements
 
@@ -22,7 +22,7 @@ date || credit || debit || balance
 10/01/2023 || 1000.00 || || 1000.00
 ```
 
-### Basic strategy
+### Initial strategy
 
 - Create the program in JS with Node.
 - 3 classes Transactions, History, BankAccount.
