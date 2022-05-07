@@ -1,13 +1,13 @@
 # Bank Node app
 
-### Requirements
+## Requirements
 
 - You should be able to interact with your code via a REPL like IRB or Node. (You don't need to implement a command line interface that takes input from STDIN.)
 - Deposits, withdrawal.
 - Account statement (date, amount, balance) printing.
 - Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
-### Acceptance criteria
+## Acceptance criteria
 
 **Given** a client makes a deposit of 1000 on 10-01-2023  
 **And** a deposit of 2000 on 13-01-2023  
@@ -22,7 +22,59 @@ date || credit || debit || balance
 10/01/2023 || 1000.00 || || 1000.00
 ```
 
-### Initial strategy
+## Getting started
+Run the following commands to set up the app:<br> 
+```git clone https://github.com/HarryClenyg/bank-tech-test.git```<br>
+```cd bank-tech-test/lib```<br>
+```node```<br>
+
+Next, import the necessary classes:</br>
+```const Account = require("./bankAccount");```<br>
+```const Statement = require("./statement");```<br>
+```const Transaction = require("./transaction");```<br>
+
+Finally, create a new instance of the bankAccount class:<br>
+```barclays = new Account```<br>
+
+You will then need to import the necessary classes
+
+## Usage
+
+<table>
+    <thead>
+        <tr>
+            <th>Command</th>
+            <th>Definition</th>
+            <th>Example</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>barclays.deposit(amount)</td>
+            <td width="100">adds a new, timestamped deposit of 'amount' to transactionHistory.</td>
+            <td rowspan=5><img src="screenshots/Screen%20Shot%202022-05-07%20at%204.14.08%20PM.png?raw=true" width="300"></td>
+        </tr>
+        <tr>
+            <td>barclays.withdraw(amount)</td>
+            <td >adds a new, timestamped withdrawal of 'amount' to transactionHistory.</td>
+        </tr>
+        <tr>
+            <td>barclays.transactionHistory</td>
+            <td>allows the user to view transactionHistory.</td>
+        </tr>
+        <tr>
+            <td>barclays.currentBalance()</td>
+            <td>displays the current balance.</td>
+        </tr>
+        <tr>
+            <td>barclays.printStatement()</td>
+            <td>creates a new statement. This command returns a linear statement, however if you run: 'console.log(barclays.printStatement)', a tabular statement is printed to the REPL</td>
+        </tr>
+    </tbody>
+</table>
+
+
+## Initial strategy
 
 - Create the program in JS with Node.
 - 3 classes Transactions, History, BankAccount.
