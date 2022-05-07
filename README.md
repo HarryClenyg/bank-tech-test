@@ -25,7 +25,9 @@ date || credit || debit || balance
 ## Getting started
 Run the following commands to set up the app:<br> 
 ```git clone https://github.com/HarryClenyg/bank-tech-test.git```<br>
-```cd bank-tech-test/lib```<br>
+```cd bank-tech-test```<br>
+```cd npm install```<br>
+```cd lib```<br>
 ```node```<br>
 
 Next, import the necessary classes:</br>
@@ -73,6 +75,14 @@ You will then need to import the necessary classes
     </tbody>
 </table>
 
+## Testing
+
+Use the command ```jest``` to run all tests.
+
+Unit tests can be found in the statement.test.js and transaction.test.js files. All feature tests are located in the bankAccount.test.js file as this this is the only file which depends on other classes.
+
+The tests use the code ```jest.fakeTimers.setSystemTime(new Date('2020-01-01'));```, to mock the date, and a mock object was created to simulate the transactionHistory.
+
 
 ## Initial strategy
 
@@ -80,19 +90,16 @@ You will then need to import the necessary classes
 - 3 classes Transactions, History, BankAccount.
 - Use TDD process to mitigate bugs.
 
-### Transactions Class
+## Transactions Class
 I started with the Transactions Class as that seemed it would not need to rely on any other classes, which meant I could test appropriately from the start.
 
-To begin with, I included a 'difference' property as opposed to the 'amount' property. The reflected the difference it would make to the balance. It also enabled me to test the behaviour of the class.  I later refactored the 'difference' out of this class as it gave me problems when printing the statement. The result is that I was no longer able to test the behaviour of the class, which isn't ideal.
+To begin with, I included a 'difference' property as opposed to the 'amount' property. The reflected the difference it would make to the balance. It also enabled me to test the behaviour of the class.  I later refactored the 'difference' out of this class as it gave me problems when printing the statement. 
 
-### History Class
-The History Class is very simple. It essentially serves as the memory for the program. I created an empty array on instatiation of the class, which can then be populated with the method 'addTransaction'. I tried to find a way to get to get transactions to automatically populate the History class without having to be instatiated in the parameter for 'addTransaction' but couldn't work it out, so this was the best solution that still generated the desired output.
+## History Class
+I initially planned for the History Class to have an 'addTransaction' method but this caused a dependency conflict, so I abandoned the History class and moved the 'addTransaction' method into the BankAccount class which gets called when users make a deposit/withdrawal.
 
-### BankAccount Class
-My idea for the bank account class was for it to behave like an ATM. So for that I understood I would need to have methods for 'printStatement' and 'currentBalance' as well as instatiating the History class to allow access to the 'addTransaction' method.
+## BankAccount Class
+My idea for the bank account class was for it to behave like an ATM. So for that I understood I would need to have methods for 'deposit', 'withdraw', 'printStatement' and 'currentBalance'.
 
-I wanted 'printStatement' to return a blank statement if there hadn't been any transactions yet, so I added the headers for the statement as string in the 'statement' property of the BankAccount object, making it straightforward to call, and allowing a more simple approach when creating the 'printStatement' method. 
-
-The method itself proved to be less complicated than I expected, although I struggled with the decimal format for the numbers as JS doesn't seem to enable you to return floats very easily. My understanding is that JS ignores decimal places if they are only 0s. The workaround was to fix the number of decimals and then convert the result into a string before returning.
-
-As for the 'currentBalance' method. I began by adding/subtracting amounts directly to the 'openingBalance' property, but realised that this only worked the first time I was calling the method. From this it was clear the the 'printStatement' method would have the same issue. I was able to correct this by assigning the 'openingBalance' method to a variable in each method, which could then be manipulated without changing the original 'openingBalance' property.
+## Statement Class
+I wanted 'printStatement' to return a blank statement if there hadn't been any transactions yet, so originally, I added the headers for the statement as string in a 'statement' property of the BankAccount object. However, this caused the BankAccount class to be a bit too verbose, so I refactored the rendering of the statement into a new Statement class.
